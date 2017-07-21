@@ -1,0 +1,68 @@
+<script type="text/javascript">
+	function onUpInCommodity(){
+		var formData = new FormData();
+	    formData.append('filepath', $('#incommodity')[0].files[0]);
+	    formData.append('op', "in");
+	    $.ajax({
+	        url: "/bs/admin/commoditytemplates",
+	        type: 'POST',
+	        cache: false,
+	        data: formData,
+	        processData: false,
+	        contentType: false
+	    }).done(function(res) {
+	        var obj = JSON.parse(res)
+	        if (obj.code == 0 ){
+	        	window.location.href = "/bs/admin/commoditytemplates"
+	        }else{
+	            alert(obj.err)
+	        }
+	    }).fail(function(res) {
+	        console.log(res)
+	    });
+	}
+	function onUpOutCommodity(){
+		var formData = new FormData();
+	    formData.append('filepath', $('#outcommodity')[0].files[0]);
+	    formData.append('op', "out");
+	    $.ajax({
+	        url: "/bs/admin/commoditytemplates",
+	        type: 'POST',
+	        cache: false,
+	        data: formData,
+	        processData: false,
+	        contentType: false
+	    }).done(function(res) {
+	        var obj = JSON.parse(res)
+	        if (obj.code == 0 ){
+	        	window.location.href = "/bs/admin/commoditytemplates"
+	        }else{
+	            alert(obj.err)
+	        }
+	    }).fail(function(res) {
+	        console.log(res)
+	    });
+	}
+	function onUpAllCommodity(){
+		var formData = new FormData();
+	    formData.append('filepath', $('#allcommodity')[0].files[0]);
+	    formData.append('op', "all");
+	    $.ajax({
+	        url: "/bs/admin/commoditytemplates",
+	        type: 'POST',
+	        cache: false,
+	        data: formData,
+	        processData: false,
+	        contentType: false
+	    }).done(function(res) {
+	        var obj = JSON.parse(res)
+	        if (obj.code == 0 ){
+	        	window.location.href = "/bs/admin/commoditytemplates"
+	        }else{
+	            alert(obj.err)
+	        }
+	    }).fail(function(res) {
+	        console.log(res)
+	    });
+	}
+</script>

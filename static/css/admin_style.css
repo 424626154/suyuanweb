@@ -1,0 +1,84 @@
+.admin_bg {
+	width: auto;
+	display: table;  
+    margin-left: auto;  
+    margin-right: auto; 
+    padding-top: 80px;
+}
+
+.product_showimg {
+	width: auto;
+	height: 40px;
+}
+
+.product_popimg{
+	width: 100px;
+	height: auto;
+}
+
+
+.product_drief{
+	width:200px; 
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	overflow:hidden;
+}
+
+.product_showimg_up{
+	width: auto;
+	height: 60px;
+}
+.product_showimg_big{
+
+}
+
+.header_index{
+	color: #000000;
+}
+
+.content_bg{
+	padding: 0px;
+}
+
+.footer_bg{
+	height: 40px;
+	background-color: #222d32;
+	text-align:center
+}
+
+.footer_font{
+	color: white;
+}
+
+
+.news_img_thu{
+	width: 60px;
+	height: auto;
+}
+
+.banner_img_thu{
+	width: auto;
+	height: 120px;
+}
+
+
+.time_div{
+	float: right;
+	position:inherit;
+	color:#767676;
+	height: 30px;
+}
+
+.clear_both{
+	clear:both
+}
+
+
+.page_div{
+	float: right;
+	position:inherit;
+	padding-right: 20px;
+}
+
+
+

@@ -1,0 +1,12 @@
+<link href="/static/summernote/summernote.css" rel="stylesheet">
+<script src="/static/summernote/summernote.js"></script>
+<script type="text/javascript">
+$(function() {
+    if ({{.Banner.BLink}} == false) {
+        $("#content2").html($("#content1").text());
+    }
+    $("#sidebar_banner").addClass("menu-open")
+    $("#sidebar_banner ul").show()
+    $("#sidebar_banner ul li:nth-child(1)").addClass("active")
+});
+</script>

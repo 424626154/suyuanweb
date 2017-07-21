@@ -1,0 +1,14 @@
+<script src="/static/js/bootstrap-paginator.js"></script>>
+<script type="text/javascript">
+$(function() {
+    $("#page").bootstrapPaginator({
+        currentPage: '{{.Page.PageNo}}',
+        totalPages: '{{.Page.TotalPage}}',
+        bootstrapMajorVersion: 3,
+        size: "small",
+        onPageClicked: function(e, originalEvent, type, page) {
+            window.location.href = "/bs/export?p=" + page
+        }
+    });
+});
+</script>

@@ -1,0 +1,88 @@
+<!-- 添加入库登记 -->
+<div class="home_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li>
+                <a href="/bs/incommoditys" class="header_index">入库登记表</a>
+            </li>
+            <li class="active">添加入库</li>
+        </ol>
+    </div>
+    <div>
+        <form role="form" id="addincommodity" action="/bs/addincommodity" method="post" enctype="multipart/form-data">
+            <div class="box-body" >
+                <label for="">入库时间</label>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="time" name="time">
+                </div>
+            </div>
+            <div class="box-body" >
+                <label for="">订单标号</label>
+                <input type="text" class="form-control" id="ordernumber" name="ordernumber" placeholder="请输入订单标号">
+            </div>
+            <div class="box-body">
+                <label>名称</label>
+                <input type="hidden" class="form-control" id="name" name="name" placeholder="请输入产品名称">
+                <select id="name_select" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" onchange="onNameSelect(this)">
+                    {{range .Names}}
+                    <option>{{.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="box-body" id="link_div">
+                <label for="">单位</label>
+                <input type="hidden" class="form-control" id="unit" name="unit" placeholder="请输入单位">
+                <div class="radio box-body" id="radio_div" name="radio_div">
+                    <label>
+                        <input type="radio" name="rd" id="rd0" value="rd0">件
+                    </label>
+                    <label>
+                        <input type="radio" name="rd" id="rd1" value="rd1">箱
+                    </label>
+                </div>
+            </div>
+            <div class="box-body">
+                <label>规格</label>
+                <input type="hidden" class="form-control" id="spec" name="spec" placeholder="请输入产品规格">
+                <select id="spec_select" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" onchange="onSpecSelect(this)">
+                    {{range .Specs}}
+                    <option>{{.Spec}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="box-body" >
+                <label for="">单价</label>
+                <input type="number" class="form-control" id="unitprice" name="unitprice" placeholder="请输入单价">
+            </div>
+            <div class="box-body">
+                <label for="">数量</label>
+                <input type="number" class="form-control" id="number" name="number" placeholder="请输入数量">
+            </div>
+<!--             <div class="box-body">
+                <label for="">金额</label>
+                <input type="text" class="form-control" id="total" name="total" placeholder="请输入金额">
+            </div> -->
+            <div class="box-body">
+                <label for="">经办人</label>
+                <input type="text" class="form-control" id="operator" name="operator" placeholder="请输入经办人">
+            </div>
+            <div class="box-body">
+                <label for="">备注</label>
+                <input type="text" class="form-control" id="remarks" name="remarks" placeholder="请输入备注">
+            </div>
+            <div class="box-body">
+                <label for="">合并到进销存</label>
+                <input type="checkbox" id="merge" name="merge" checked ="checkbox">
+            </div>
+            <div class="box-body">
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="content_bg">
+
+	<div>
+		<ol class="breadcrumb">
+	      <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+	      <li><a href="/admin/products?p={{.Page}}" class="header_index">产品列表</a> </li>
+	      <li class="active">{{.Product.Name}}</li>
+	    </ol>
+	</div>
+	<div class="row box-body">
+		<div class="thumbnail">
+			<img class="img-thumbnail product_showimg_big" src="{{isimgpath .Product.ShowImg}}" alt="{{isimgpath .Product.ShowImg}}">
+			<div class="caption">
+	        <h3>品名:{{.Product.Name}}</h3>
+	        <p>香型:{{.Product.TasteType}}</p>
+	        <p>净含量:{{.Product.Weight}}ml</p>
+	        <p>酒精度:{{.Product.Alcoholic}}%(vol)</p>
+	        {{if ne .Product.Brief "" }}
+			<h4>产品简介</h4>
+				{{.Product.Brief}}
+			{{end}}
+	        <p id="state_p">状态:
+	        	{{if eq .Product.ProductState true}}
+                      <span class="label label-success">已上架</span>
+               	{{else}}
+                      <span class="label label-default">未上架</span>
+                {{end}}
+                {{if eq .Product.IsHome true}}
+                      <span class="label label-success">首页显示</span>
+                {{end}}
+	        </p>
+	        <div class="time_div">
+				{{timeformatstyle1 .Product.CTime}}
+		  	</div>
+		  	{{if gt .Auth 0}}
+				<div class="clear_both">
+					<input id="order" type="number"/>
+					<button class="btn btn-default" role="button" onclick="upOrder()">保存</button>
+					<div id="order_err_alert"></div>
+				</div>
+	        <p >
+	        	<a  href="/admin/product?op=up&id={{.Product.Id}}&state={{.Product.ProductState}}&p={{.Page}}" id="state_but" class="btn btn-primary" role="button">
+	        	{{if eq .Product.ProductState true}}
+                      下架
+               	{{else}}
+                      上架
+                {{end}}
+                </a>
+                <a  href="/admin/product?op=home&id={{.Product.Id}}&ishome={{.Product.IsHome}}&p={{.Page}}" id="state_but" class="btn btn-primary" role="button">
+	        	{{if eq .Product.IsHome true}}
+                      取消首页显示
+               	{{else}}
+                      首页显示
+                {{end}}
+                </a>
+                 <a class="btn btn-default" role="button" href="/admin/upproduct?id={{.Product.Id}}&p={{.Page}}">修改</a>
+                 <a class="btn btn-danger" role="button" href="/admin/product?op=del&id={{.Product.Id}}&p={{.Page}}">删除</a>
+              </p>
+             {{end}}
+	      </div>
+		</div>
+	</div>
+</div>

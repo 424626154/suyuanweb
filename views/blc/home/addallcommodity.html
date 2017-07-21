@@ -1,0 +1,84 @@
+<!-- 添加入库登记 -->
+<div class="home_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li>
+                <a href="/bs/allcommoditys" class="header_index">进销存登记表</a>
+            </li>
+            <li class="active">添加进销存登记</li>
+        </ol>
+    </div>
+    <div>
+        <form role="form" id="addallcommodity" action="/bs/addallcommodity" method="post" enctype="multipart/form-data">
+            <div class="box-body" >
+                <label for="">入库时间</label>
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input type="text" class="form-control pull-right" id="cdate" name="cdate">
+                </div>
+            </div>
+            <div class="box-body">
+                <label>名称</label>
+                <input type="hidden" class="form-control" id="name" name="name" placeholder="请输入产品名称">
+                <select id="name_select" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" onchange="onNameSelect(this)">
+                    {{range .Names}}
+                    <option>{{.Name}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="box-body">
+                <label>规格</label>
+                <input type="hidden" class="form-control" id="spec" name="spec" placeholder="请输入产品规格">
+                <select id="spec_select" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true" onchange="onSpecSelect(this)">
+                    {{range .Specs}}
+                    <option>{{.Spec}}</option>
+                    {{end}}
+                </select>
+            </div>
+            <div class="box-body" id="link_div">
+                <label for="">单位</label>
+                <input type="hidden" class="form-control" id="unit" name="unit" placeholder="请输入单位">
+                <div class="radio box-body" id="radio_div" name="radio_div">
+                    <label>
+                        <input type="radio" name="rd" id="rd0" value="rd0">件
+                    </label>
+                    <label>
+                        <input type="radio" name="rd" id="rd1" value="rd1">箱
+                    </label>
+                </div>
+            </div>
+            <div class="box-body" >
+                <label for="">期初结存数量</label>
+                <input type="number" class="form-control" id="startnumber" name="startnumber" placeholder="请输入单价">
+            </div>
+            <div class="box-body">
+                <label for="">期初结存金额</label>
+                <input type="number" class="form-control" id="starttotal" name="starttotal" placeholder="请输入数量">
+            </div>
+            <div class="box-body" >
+                <label for="">本期购进单价</label>
+                <input type="number" class="form-control" id="inunitprice" name="inunitprice" placeholder="请输入单价">
+            </div>
+            <div class="box-body">
+                <label for="">本期购进数量</label>
+                <input type="number" class="form-control" id="innumber" name="innumber" placeholder="请输入数量">
+            </div>
+            <div class="box-body" >
+                <label for="">本期发出单价</label>
+                <input type="number" class="form-control" id="outunitprice" name="outunitprice" placeholder="请输入单价">
+            </div>
+            <div class="box-body">
+                <label for="">本期发出数量</label>
+                <input type="number" class="form-control" id="outnumber" name="outnumber" placeholder="请输入数量">
+            </div>
+            <div class="box-body">
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+        </form>
+    </div>
+</div>

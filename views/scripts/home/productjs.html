@@ -1,0 +1,52 @@
+<script type="text/javascript">
+	$(function(){
+		 $("#nav_products_li").addClass("active")
+         if({{.Older}} == 0){
+         	$("#previous").addClass("disabled")
+         }
+         if({{.Newer}} == 0){
+         	$("#next").addClass("disabled")
+         }
+	});
+	function pageTurning(type){
+		if(type == 0){
+			if({{.Older}} == 0){
+
+			}else{
+				window.location.href = "/product?id="+ {{.Older}}
+			}
+		}else if(type == 1){
+			if({{.Newer}} == 0){
+
+			}else{
+				window.location.href = "/product?id="+ {{.Newer}}
+			}
+		}
+	}
+	// function upState(id,state){
+	// 	$.get("/admin/product/upstate",{ id:id, state: !state },
+	// 	 function(data){
+	// 	 	obj = JSON.parse(data)
+	// 	  if(obj.code == 0){
+	// 	  	// console.log(obj.state);
+	// 	  	var span_html = ""
+	// 	  	var state_but = ""
+	// 	  	if (obj.state) {
+	// 	  		span_html = "状态:<span class=\"label label-success\">已上架</span>"
+	// 	  		state_but = "下架"
+	// 	  	}else{
+	// 	  		span_html = "状态:<span class=\"label label-default\">未上架</span>"
+	// 	  		state_but = "上架"
+	// 	  	}
+	// 	  	console.log($("#state_but").text());
+	// 	  	$("#state_p").empty().html(span_html)
+	// 	  	$("#state_but").text(state_but)
+	// 	  }else{
+	// 	  	alert(obj.error)
+	// 	  }
+	// 	});
+	// }
+	function delProduct(id){
+		alert(id)
+	}
+</script>

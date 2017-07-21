@@ -1,0 +1,40 @@
+<div class="content_bg">
+	<div>
+    <ol class="breadcrumb">
+        <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+        <li><a href="/admin/newss?p={{.Page}}" class="header_index">新闻列表</a></li>
+        <li><a href="/admin/news?id={{.News.Id}}&p={{.Page}}" class="header_index">新闻详情</a></li>
+        <li class="active">修改新闻</li>
+    </ol> 
+  </div>
+
+  <div class="box box-primary">
+  	<form role="form" id="addproductform" action="/admin/upnews" method="post" enctype="multipart/form-data">
+  		  <input type="hidden" class="form-control" id="id" name="id" value="{{.News.Id}}">
+        <input type="hidden" class="form-control" id="p" name="p" value="{{.Page}}">
+        <div class="box-body">
+          <label for="">新闻标题</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="请输入新闻标题">
+        </div>
+        <div class="box-body">
+          <label for="">新闻简介</label>
+          <input type="text" class="form-control" id="outline" name="outline" placeholder="请输入新闻简介">
+        </div>
+        <div class="box-body" id="showfromimg">
+        {{if ne .News.ShowImg ""}}
+             <img class="img-thumbnail product_showimg_up" src="{{isimgpath .News.ShowImg}}" alt="{{isimgpath .News.ShowImg}}">
+        {{end}}
+        </div>
+        <div class="box-body">
+          <label for="">修改新闻预览图</label>
+          <input type="file" class="form-control" id="showimg" name="showimg" accept="image/jpeg,image/jpg,image/png" onchange="uploadFile(this)" />
+        </div>
+        <div class="box-body">
+    			<textarea type="text"  name="content" id="summernote"></textarea>
+    		</div>
+	  	<div class="box-body">
+                <button type="submit" class="btn btn-primary">修改</button>
+        </div>
+	</form>
+  </div>
+</div>

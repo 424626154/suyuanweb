@@ -1,0 +1,16 @@
+<div>
+	<div class="row">
+	{{range .Newss}}
+	  <div class="col-sm-6 col-md-4">
+	  	<a class="products_a" href="/product?id={{.Id}}">
+	    <div class="thumbnail">
+	      <img src="{{isimgpath .ShowImg}}" alt="{{isimgpath .ShowImg}}">
+	      <div class="caption">
+	        <h3>{{.Name}}</h3>
+	      </div>
+	    </div>
+		</a>
+	  </div>
+	  {{end}}
+	</div>
+</div>

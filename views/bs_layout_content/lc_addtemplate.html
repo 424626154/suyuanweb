@@ -1,0 +1,40 @@
+<div class="content_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li class="active">添加模板</li>
+        </ol>
+    </div>
+    <div class="box box-primary">
+    	{{if ne .Error ""}}
+	    	<div class="alert alert-danger" role="alert">{{.Error}}</div>
+	    {{end}}
+        <form role="form" id="addtemplate" action="/bs/addtemplate" method="post" enctype="multipart/form-data">
+            <div class="box-body" id="link_div">
+                <label for="">模板标题</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="请输入模板标题">
+            </div>
+            <div class="box-body" id="link_div">
+                <label for="">模板描述</label>
+                <input type="text" class="form-control" id="describe" name="describe" placeholder="请输入模板描述">
+            </div>
+            
+            <div class="box-body">
+                <label for="">选择模板</label>
+   <!--              *.doc   application/msword  MS Word Document  
+				*.dot   application/msword  MS Word Template  
+                *.xlc   application/vnd.ms-excel    MS Excel Chart  
+				*.xlm   application/vnd.ms-excel    MS Excel Macro  
+				*.xls   application/vnd.ms-excel    MS Excel Spreadsheet  
+				*.xlt   application/vnd.ms-excel    MS Excel Template  
+				*.xlw   application/vnd.ms-excel    MS Excel Workspace   -->
+                <input type="file" class="form-control" id="filepath" name="filepath" accept=".doc,.docx,.xls,.xlsx" />
+            </div>
+            <div class="box-body">
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+        </form>
+    </div>
+</div>

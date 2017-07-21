@@ -1,0 +1,28 @@
+<link href="/static/summernote/summernote.css" rel="stylesheet">
+<script src="/static/summernote/summernote.js"></script>
+<script type="text/javascript">
+	$(function(){
+         $("#content2").html($("#content1").text());
+         if({{.Older}} == 0){
+         	$("#previous").addClass("disabled")
+         }
+         if({{.Newer}} == 0){
+         	$("#next").addClass("disabled")
+         }
+	});
+	function pageTurning(type){
+		if(type == 0){
+			if({{.Older}} == 0){
+
+			}else{
+				window.location.href = "/news?id=" + {{.Older}}
+			}
+		}else if(type == 1){
+			if({{.Newer}} == 0){
+
+			}else{
+				window.location.href = "/news?id=" + {{.Newer}}
+			}
+		}
+	}
+</script>

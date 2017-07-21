@@ -1,0 +1,62 @@
+<script type="text/javascript">
+// function upState(id,state){
+// 	$.get("/admin/product/upstate",{ id:id, state: !state },
+// 	 function(data){
+// 	 	obj = JSON.parse(data)
+// 	  if(obj.code == 0){
+// 	  	// console.log(obj.state);
+// 	  	var span_html = ""
+// 	  	var state_but = ""
+// 	  	if (obj.state) {
+// 	  		span_html = "状态:<span class=\"label label-success\">已上架</span>"
+// 	  		state_but = "下架"
+// 	  	}else{
+// 	  		span_html = "状态:<span class=\"label label-default\">未上架</span>"
+// 	  		state_but = "上架"
+// 	  	}
+// 	  	console.log($("#state_but").text());
+// 	  	$("#state_p").empty().html(span_html)
+// 	  	$("#state_but").text(state_but)
+// 	  }else{
+// 	  	alert(obj.error)
+// 	  }
+// 	});
+// }
+$(function() {
+    $("#sidebar_product").addClass("menu-open")
+    $("#sidebar_product ul").show()
+    $("#sidebar_product ul li:nth-child(1)").addClass("active")
+    $("#order").val({{.Product.OrderId}})
+});
+
+function delProduct(id) {
+
+}
+function upOrder(){
+  var data = "op=uporder&id="+{{.Product.Id}}+"&order="+$("#order").val();
+  $.ajax({
+     type: "POST",
+     url: "/admin/productajax",
+     data: data,
+     dataType : 'json',
+     success: function(obj){
+        console.log(obj)
+        if (obj.code == 0){
+          $("#order").val(obj.order)
+        }else{
+          // console.log(obj.err)
+          // alert(obj.err)
+           $("#order_err_alert").append("<div id=\"order_err_alert\" class=\"alert alert-warning alert-dismissible\" role=\"alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>"+obj.err+"!</strong></div>");  
+
+        }
+     },
+     error: function(XMLHttpRequest, textStatus, errorThrown) {  
+                       // alert(XMLHttpRequest.status);  
+                       // alert(XMLHttpRequest.readyState);  
+                       // alert(textStatus);  
+                       console.log(textStatus)
+                       console.log(errorThrown)
+                   }
+  });
+}
+</script>

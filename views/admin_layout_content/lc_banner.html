@@ -1,0 +1,54 @@
+<div class="content_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li><a href="/admin/banners" class="header_index">Banner列表</a></li>
+            <li class="active">Banner详情</li>
+        </ol>
+    </div>
+    <div class="box box-body">
+    <div>
+        <div>
+            <img class="img-thumbnail product_showimg_big" src="{{isimgpath .Banner.Image}}" alt="{{isimgpath .Banner.Image}}">
+        </div>
+        <div>
+         {{if eq .Banner.State 1}}
+        <span class="label label-success">外部链接</span> {{else if eq .Banner.State 2}}
+        <span class="label label-default">自定义内容</span> {{else}}
+        <span class="label label-default">无响应</span> {{end}}
+
+        </div>
+        {{if eq .Banner.State 1}}
+            <a href="{{.Banner.Link}}">{{.Banner.Link}}</a> 
+        {{else if eq .Banner.State 2}}}
+            <div id="content1" hidden="hidden">
+                {{.Banner.Content}}
+            </div>
+            <div id="content2">
+            </div>
+        {{end}}
+    </div>
+    <p id="state_p">状态: {{if eq .Banner.ReleaseState true}}
+        <span class="label label-success">已发布</span> {{else}}
+        <span class="label label-default">未发布</span> {{end}}
+    </p>
+    <div class="time_div">
+        {{timeformatstyle1 .Banner.CTime}}
+    </div>
+    {{if gt .Auth 0}}
+    <p class="clear_both">
+        <a href="/admin/banner?op=up&id={{.Banner.Id}}&state={{.Banner.ReleaseState}}" id="state_but" class="btn btn-primary" role="button">
+	        	{{if eq .Banner.ReleaseState true}}
+                      撤销
+               	{{else}}
+                      发布
+                {{end}}
+                </a>
+        <a class="btn btn-default" role="button" href="/admin/upbanner?id={{.Banner.Id}}">修改</a>
+        <a class="btn btn-danger" role="button" href="/admin/banner?op=del&id={{.Banner.Id}}">删除</a>
+    </p>
+    {{end}}
+    </div>
+</div>

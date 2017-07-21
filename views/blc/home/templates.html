@@ -1,0 +1,45 @@
+<div class="home_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li class="active">模板列表</li>
+        </ol>
+    </div>
+
+    <div class="search_bg">
+      <div class="input-group">
+        <input type="text" class="form-control" id="search_text" placeholder="请输入需要搜索的模板">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" onclick="onSearch()">搜索</button>
+        </span>
+      </div><!-- /input-group -->
+    </div>
+
+     <ul class="list-group">
+          {{range .Temaplates}}
+              <li class="list-group-item">
+                <div class="media">
+                  <div class="media-body">
+                    <h4 class="media-heading">
+                    {{.Title}}
+                      {{if eq .FileType ".docx"}}
+                        <i class="fa fa-file-word-o"></i>
+                      {{else if  eq .FileType ".xlsx"}}
+                        <i class="fa fa-file-excel-o"></i>
+                      {{end}}
+                    </h4>
+                    {{.Describe}}        
+                    <div class="time_div">
+                        {{timeformatstyle1 .CTime}}
+                    </div>
+                  </div>
+                  <div class="media-right">
+                    <a type="button" class="btn btn-primary" href="/bsfilehosting/{{.FileName}}">下载</a>
+                  </div>
+                </div>
+               </li>    
+            {{end}}
+        </ul>
+</div>

@@ -1,0 +1,31 @@
+.admin_bg{
+
+}
+.admin_index {
+	width: auto;
+	display: table;  
+    margin-left: auto;  
+    margin-right: auto; 
+    padding-top: 80px;
+}
+
+.time_div{
+	float: right;
+	position:inherit;
+	color:#767676;
+	height: 30px;
+}
+
+
+.search_bg{
+	padding:10px;
+}
+
+
+.home_bg{
+
+}
+
+.clearfix{
+	clear:both;
+}

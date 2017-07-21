@@ -1,0 +1,37 @@
+<div class="content_bg">
+	<div>
+    <ol class="breadcrumb">
+        <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+        <li><a href="/admin/admins" class="header_index">账号列表</a></li>
+        <li class="active">修改密码</li>
+    </ol> 
+  </div>
+  <div class="box box-primary">
+  		{{if ne .Error ""}}
+	    	<div class="alert alert-danger" role="alert">{{.Error}}</div>
+	    {{end}}
+  	<form role="form" id="addproductform" action="/admin/upadminpwd" method="post" enctype="multipart/form-data">
+  		<div class="box-body">
+          <label for="">账号:{{.Admin.Account}}</label>
+         <input type="hidden" class="form-control" id="id" name="id" value="{{.Admin.Id}}">
+         <input type="hidden" class="form-control" id="account" name="account" value="{{.Admin.Account}}">
+        </div>
+        <div class="box-body">
+          <label for="">输入原始密码</label>
+          <input type="text" class="form-control" id="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="box-body">
+          <label for="">输入新密码</label>
+          <input type="text" class="form-control" id="newpassword" name="newpassword" placeholder="请输入密码">
+        </div>
+        <div class="box-body">
+          <label for="">再次输入新密码</label>
+          <input type="text" class="form-control" id="newconfirmpwd" name="newconfirmpwd" placeholder="请输入密码">
+        </div>
+	  	<div class="box-body">
+                <button type="submit" class="btn btn-primary">修改</button>
+        </div>
+	</form>
+  </div>
+  
+</div>

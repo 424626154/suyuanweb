@@ -1,0 +1,29 @@
+<script type="text/javascript">
+	$(function(){
+		$("#sidebar_configure").addClass("active");
+		$("#news_check").attr("checked",{{.Cnfigure.ShowNews}});
+		$("#entservice_check").attr("checked",{{.Cnfigure.EntService}});
+	})	
+	$("#news_check").change(function(e) {
+	    console.log(e)
+	});
+	function onSave(){
+		var news_check = $("#news_check").is(':checked')
+		var entservice_check = $("#entservice_check").is(':checked')
+		$.ajax({
+	        url: '/admin/configure', //后台文件上传接口
+	        type: 'GET',
+	        dataType:"json",
+	        data: {
+	        	id:{{.Cnfigure.Id}},
+	        	op:"up",
+	        	news_check:news_check,
+	        	entservice_check:entservice_check
+	        },
+	        success: function(data) {
+	            console.log(data);
+	        }
+    	});
+	}
+
+</script>

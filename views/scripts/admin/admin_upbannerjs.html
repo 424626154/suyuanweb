@@ -1,0 +1,78 @@
+<!-- include summernote css/js-->
+<link href="/static/summernote/summernote.css" rel="stylesheet">
+<script src="/static/summernote/summernote.js"></script>
+<script type="text/javascript">
+	$(function(){
+	    $("#sidebar_banner").addClass("menu-open")
+    	$("#sidebar_banner ul").show()
+    	$("#sidebar_banner ul li:nth-child(1)").addClass("active")
+		$("#link").val({{.Banner.Link}})
+		if({{.Banner.State}} == 1){
+			$('input:radio:first').attr('checked', 'true');
+			$("#link_div").show();
+		   	$("#summernote_div").hide();
+		}else if({{.Banner.State}} == 2){
+			$('input[value="rd1"]').attr('checked', 'true');
+			$("#link_div").hide();
+			$("#summernote_div").show();
+		}else {
+			$('input:radio:last').attr('checked', 'true');
+			$("#link_div").hide();
+			$("#summernote_div").hide();
+		}
+	})
+	function uploadFile(file){
+		$("#showfromimg").hide();
+	}
+	$(document).ready(function() {
+	  $('#summernote').summernote({
+	  	        // height: 400,                  
+		        minHeight: 300,             
+		        // maxHeight: 500,        
+		        focus: true,   
+		        lang:'zh-CN',  
+			    // onImageUpload callback
+				callbacks: {
+				    onImageUpload: function(files) {
+				    	sendFile(files);
+				      // upload image to server and create imgNode...
+				      // $summernote.summernote('insertNode', imgNode);
+				    }
+				  }
+	  });
+	  $('#summernote').summernote('code',{{.Banner.Content}});
+	  $(":radio").click(function(){
+		   var rd = $(this).val()
+		   console.log(rd);
+		   if (rd == "rd0"){
+		   		$("#link_div").show();
+		   		$("#summernote_div").hide();
+		   }else if (rd == "rd1"){
+				$("#link_div").hide();
+				$("#summernote_div").show();
+		   }else if (rd == "rd2"){
+				$("#link_div").hide();
+				$("#summernote_div").hide();
+			}
+		});
+	});
+	//图片上传  
+	function sendFile(files){
+		// upload image to server and create imgNode...
+		// $summernote.summernote('insertNode', imgNode);
+		console.log(files);
+		var formData = new FormData();
+            formData.append('file',files[0]);
+            $.ajax({
+                url : '/imagehosting',//后台文件上传接口
+                type : 'POST',
+                data : formData,
+                processData : false,
+                contentType : false,
+                success : function(data) {
+                	console.log(data);
+                    $('#summernote').summernote('insertImage',data,'img');
+                }
+            });
+	}
+</script>

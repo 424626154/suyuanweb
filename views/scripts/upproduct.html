@@ -1,0 +1,11 @@
+<script type="text/javascript">
+	$(function(){
+		$("#name").val({{.Product.Name}})
+		$("#tastetype").val({{.Product.TasteType}})
+		$("#weight").val({{.Product.Weight}})
+		$("#alcoholic").val({{.Product.Alcoholic}})
+	})
+	function uploadFile(file){
+		$("#showfromimg").hide();
+	}
+</script>

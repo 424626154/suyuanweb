@@ -1,0 +1,48 @@
+<div class="content_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li><a href="/admin/newss?p={{.Page}}" class="header_index">新闻列表</a></li>
+            <li class="active">{{.News.Title}}</li>
+        </ol>
+    </div>
+    <div class="box box-body">
+    <div>
+        <div id="content1" hidden="hidden">
+            {{.News.Content}}
+        </div>
+        <div id="content2">
+        </div>
+    </div>
+    <p id="state_p">状态: {{if eq .News.ReleaseState true}}
+        <span class="label label-success">已发布</span> {{else}}
+        <span class="label label-default">未发布</span> {{end}} {{if eq .News.IsHome true}}
+        <span class="label label-success">首页显示</span> {{end}}
+    </p>
+    <div class="time_div">
+        {{timeformatstyle1 .News.CTime}}
+    </div>
+    {{if gt .Auth 0}}
+    <p class="clear_both">
+        <a id="state_but" class="btn btn-primary" role="button" href="/admin/news?id={{.News.Id}}&op=up&state={{.News.ReleaseState}}&p={{.Page}}">
+    {{if eq .News.ReleaseState true}}
+              撤销
+        {{else}}
+              发布
+        {{end}}
+        </a>
+        <a id="state_but" class="btn btn-primary" role="button" href="/admin/news?id={{.News.Id}}&op=home&ishome={{.News.IsHome}}&p={{.Page}}">
+    {{if eq .News.IsHome true}}
+              取消首页显示
+        {{else}}
+              首页显示
+        {{end}}
+        </a>
+        <a class="btn btn-default" role="button" href="/admin/upnews?id={{.News.Id}}&p={{.Page}}">修改</a>
+        <a class="btn btn-danger" role="button" href="/admin/news?op=del&id={{.News.Id}}">删除</a>
+    </p>
+    {{end}}
+    </div>
+</div>

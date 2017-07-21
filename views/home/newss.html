@@ -1,0 +1,22 @@
+<div>
+	<div class="list-group">
+	  {{range .Newss}}
+		  <a class="list-group-item" href="/news?id={{.Id}}">
+		  	<div class="media">
+		  	  {{if ne .ShowImg ""}}
+				  <div class="media-left media-middle">
+				      <img class="media-object news_img_thu" src="{{isimgpath .ShowImg}}" alt="{{isimgpath .ShowImg}}">
+				  </div>
+			  {{end}}
+			  <div class="media-body">
+			    <h4 class="media-heading">{{.Title}}</h4>
+			    {{.Outline}}
+			    <div class="time_div">
+			    	{{timeformatstyle1 .CTime}}
+			    </div>
+			  </div>
+			</div>
+		   </a>	
+		{{end}}
+	</div>
+</div>

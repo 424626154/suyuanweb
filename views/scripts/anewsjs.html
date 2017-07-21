@@ -1,0 +1,21 @@
+<link href="/static/summernote/summernote.css" rel="stylesheet">
+<script src="/static/summernote/summernote.js"></script>
+<script type="text/javascript">
+	$(function(){
+         $("#content2").html($("#content1").text());
+	});
+	function upState(){
+		console.log({{.News.ReleaseState}});
+		var data = "op=up&state="+{{.News.ReleaseState}}
+		$.ajax({
+		   type: "POST",
+		   url: "/admin/news?id={{.News.Id}}",
+		   data: data,
+		   dataType : 'json',
+		   success: function(obj){
+		   		console.log(obj);
+		   		console.log({{.News.ReleaseState}});
+		   }
+		});
+	}
+</script>

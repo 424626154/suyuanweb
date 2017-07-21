@@ -1,0 +1,77 @@
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+   <!--      <div class="user-panel">
+            <div class="pull-left image">
+                <img src="/static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                    用户名
+            </div>
+        </div> -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu" id="top-menu">
+            <li class="treeview" id="sidebar_admin" >
+                <a href="#"><i class="fa  fa-user"></i> 
+                    <span>账号管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="/admin/admins"><i class="fa fa-users"></i>账号列表</a></li>
+                    <li class=""><a href="/admin/addadmin"><i class="fa  fa-user-plus"></i>添加账号</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="sidebar_configure"><a href="/admin/configure"><i class="fa fa-desktop"></i> <span>官网配置</span></a></li>
+            <li class="treeview" id="sidebar_product">
+                <a href="#"><i class="fa  fa-calendar-minus-o"></i> <span>产品管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{.MenuProductsActive}}"><a href="/admin/products/"><i class="fa fa-list"></i>产品列表</a></li>
+                    <li class="{{.MenuProductAddActive}}"><a href="/admin/addproduct"><i class="fa fa-pencil"></i>添加产品</a></li>
+                </ul>
+            </li>
+
+     
+            <li class="treeview" id="sidebar_news" >
+                <a href="#"><i class="fa  fa-newspaper-o"></i> <span>新闻管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="/admin/newss"><i class="fa fa-list"></i>新闻列表</a></li>
+                    <li class=""><a href="/admin/addnews"><i class="fa fa-pencil"></i>添加新闻</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview" id="sidebar_banner">
+                <a href="#"><i class="fa  fa-newspaper-o"></i> <span>Banner管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="/admin/banners"><i class="fa fa-list"></i>Banner列表</a></li>
+                    <li class=""><a href="/admin/addbanner"><i class="fa fa-pencil"></i>添加Banner</a></li>
+                </ul>
+            </li>
+            <li class="treeview" id="sidebar_statistics">
+                <a href="#"><i class="fa  fa-list-alt"></i> <span>网站统计</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class=""><a href="/admin/pageview"><i class="fa fa-list"></i>访问量</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

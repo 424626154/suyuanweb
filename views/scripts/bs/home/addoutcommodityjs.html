@@ -1,0 +1,80 @@
+<script src="/static/js/bootstrap-datetimepicker.js"></script>
+<script src="/static/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/static/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript">
+$('#time').datetimepicker({
+    minView: "month", //选择日期后，不会再跳转去选择时分秒 
+    language: 'zh-CN',
+    format: 'yyyy-mm-dd',
+    todayBtn: 1,
+    autoclose: 1,
+});
+$(function() {
+    $("#name").val($("#name_select").val());
+    $("#unit").val("件")
+    $('input:radio:first').attr('checked', 'true');
+    $(":radio").click(function() {
+        var rd = $(this).val()
+        if (rd == "rd0") {
+            $("#unit").val("件")
+        } else if (rd == "rd1") {
+            $("#unit").val("箱")
+        }
+    });
+    $("#spec").val($("#spec_select").val());
+})
+
+function onNameSelect(sel) {
+    $("#name").val($("#name_select").val())
+}
+
+function onSpecSelect(sle) {
+    $("#spec").val($("#spec_select").val());
+}
+
+$("#addwareregform").bootstrapValidator({
+    message: '该值无效',
+    feedbackIcons: { /*input状态样式图片*/
+        valid: 'glyphicon glyphicon-ok',
+        invalid: 'glyphicon glyphicon-remove',
+        validating: 'glyphicon glyphicon-refresh'
+    },
+    live: 'enabled',
+    submitButtons: 'button[type="submit"]',
+    trigger: null,
+    fields: {
+        time: {
+            message: "该值无效",
+            validators: {
+                notEmpty: {
+                    message: "入库时间不能为空"
+                },
+            }
+        },
+        unitprice: {
+            message: "该值无效",
+            validators: {
+                notEmpty: {
+                    message: "单价不能为空"
+                },
+            }
+        },
+        number: {
+            message: "该值无效",
+            validators: {
+                notEmpty: {
+                    message: "数量不能为空"
+                },
+            }
+        },
+        total: {
+            message: "该值无效",
+            validators: {
+                notEmpty: {
+                    message: "金额不能为空"
+                },
+            }
+        }
+    }
+})
+</script>

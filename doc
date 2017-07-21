@@ -1,0 +1,23 @@
+syuan_runenv 运行环境
+阿里服务器 ali
+本机 test
+阿里苏缘正式服务器 suyuan
+
+github 
+go get github.com/beego/i18n
+go get github.com/go-sql-driver/mysql
+go get github.com/satori/go.uuid
+go get github.com/Luxurioust/excelize
+
+view
+-blc 企业BS系统contentn html文件
+--ba_ 企业BS系统contentn admin html文件
+
+
+出库登记表 Outbound registration form
+入库登记表 Warehousing registration form
+进销存登记表 Sales and inventory registration form
+
+outregc出库
+warereg入库
+sireg进销存登记表

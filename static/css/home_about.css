@@ -1,0 +1,82 @@
+#scroll_div {
+    position: relative;
+    line-height: 1.5;
+    font-family: 'Raleway', sans-serif;
+}
+
+#left_nav {
+    background: #ffffff;
+    width: 100px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+#left_nav a {
+    font-weight: normal;
+    font-size: 1.10em;
+}
+
+#left_nav a {
+    color: black;
+}
+
+#left_nav li a:hover,
+#left_nav li a:focus {
+    background: #1557a9;
+}
+
+#left_nav .active {
+    font-weight: bold;
+    background: #1557a9;
+}
+
+#left_nav .nav {
+    display: none;
+}
+
+#left_nav .active .nav {
+    display: block;
+}
+
+#left_nav .nav span {
+    margin: 0 5px 0 2px;
+}
+
+#left_nav .nav .active a,
+#left_nav .nav .active:hover a,
+#left_nav .nav .active:focus a {
+    font-weight: bold;
+    padding-left: 30px;
+    border-left: 5px solid black;
+}
+
+#left_nav .nav .active span,
+#left_nav .nav .active:hover span,
+#left_nav .nav .active:focus span {
+    display: none;
+}
+
+.affix-top {
+    position: relative;
+}
+
+.affix {
+    top: 20px;
+}
+
+.affix,
+.affix-bottom {
+    width: 100px;
+}
+
+.affix-bottom {
+    position: absolute;
+}
+
+@media (min-width: 1200px) {
+    .affix,
+    .affix-bottom {
+        width: 100px;
+    }
+}

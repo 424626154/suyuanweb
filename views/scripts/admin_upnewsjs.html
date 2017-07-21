@@ -1,0 +1,52 @@
+<!-- include summernote css/js-->
+<link href="/static/summernote/summernote.css" rel="stylesheet">
+<script src="/static/summernote/summernote.js"></script>
+<script type="text/javascript">
+$(function() {
+    $("#title").val({{.News.Title}})
+    $("#outline").val({{.News.Outline}})
+    $("#showimg").val({{.News.ShowImg}})
+    $("#sidebar_news").addClass("menu-open")
+    $("#sidebar_news ul").show()
+    $("#sidebar_news ul li:nth-child(1)").addClass("active")
+})
+
+function uploadFile(file) {
+    $("#showfromimg").hide();
+}
+$(document).ready(function() {
+    $('#summernote').summernote({
+        // height: 400,                  
+        minHeight: 300,
+        // maxHeight: 500,        
+        focus: true,
+        lang: 'zh-CN',
+        // onImageUpload callback
+        callbacks: {
+            onImageUpload: function(files) {
+                // upload image to server and create imgNode...
+                // $summernote.summernote('insertNode', imgNode);
+                sendFile(files);
+            }
+        }
+    });
+    $('#summernote').summernote('code', {{.News.Content}});
+});
+//图片上传  
+function sendFile(files) {
+    console.log(files);
+    var formData = new FormData();
+    formData.append('file', files[0]);
+    $.ajax({
+        url: '/imagehosting', //后台文件上传接口
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            console.log(data);
+            $('#summernote').summernote('insertImage', data, 'img');
+        }
+    });
+}
+</script>

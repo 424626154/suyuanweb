@@ -1,0 +1,48 @@
+<div class="admin_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li><a href="/bs/admin/templates?p={{.Page}}" class="header_index">模板列表</a></li>
+            <li><a href="/bs/admin/template?id={{.Template.Id}}&p={{.Page}}" class="header_index">模板详情</a></li>
+            <li class="active">修改模板</li>
+        </ol>
+    </div>
+    <div class="box box-primary">
+    	{{if ne .Error ""}}
+	    	<div class="alert alert-danger" role="alert">{{.Error}}</div>
+	    {{end}}
+        <form role="form" id="addtemplate" action="/bs/admin/uptemplate" method="post" enctype="multipart/form-data">
+            <input type="hidden"  id="id" name="id" placeholder="" value="{{.Template.Id}}">
+            <input type="hidden"  id="p" name="p" value="{{.Page}}">
+            <div class="box-body" id="link_div">
+                <label for="">模板标题</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="请输入模板标题">
+            </div>
+            <div class="box-body" id="link_div">
+                <label for="">模板描述</label>
+                <input type="text" class="form-control" id="describe" name="describe" placeholder="请输入模板描述">
+            </div>
+            
+            <div class="box-body" id="showfile">
+                <label for="">模板名称</label>
+                <p id="filename" name= "filename">
+                {{.Template.FileName}}
+                      {{if eq .Template.FileType ".docx"}}
+                        <i class="fa fa-file-word-o"></i>
+                      {{else if  eq .Template.FileType ".xlsx"}}
+                        <i class="fa fa-file-excel-o"></i>
+                      {{end}}
+                </p>
+            </div>
+            <div class="box-body">
+                <label for="">选择模板</label>
+                <input type="file" class="form-control" id="filepath" name="filepath" accept=".doc,.docx,.xls,.xlsx" onchange="uploadFile(this)" />
+            </div>
+            <div class="box-body">
+                <button type="submit" class="btn btn-primary">修改</button>
+            </div>
+        </form>
+    </div>
+</div>

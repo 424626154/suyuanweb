@@ -1,0 +1,46 @@
+<div class="content_bg">
+	<div>
+    <ol class="breadcrumb">
+      <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+      <li class="active">添加账号</li>
+    </ol>
+  </div>
+
+  <div class="box box-primary">
+  		{{if ne .Error ""}}
+	    	<div class="alert alert-danger" role="alert">{{.Error}}</div>
+	    {{end}}
+  	<form role="form" id="addproductform" action="/admin/addadmin" method="post" enctype="multipart/form-data">
+  		<div class="box-body">
+          <label for="">输入账号</label>
+          <input type="text" class="form-control" id="account" name="account" placeholder="请输入账号">
+        </div>
+        <div class="box-body">
+          <label for="">输入密码</label>
+          <input type="text" class="form-control" id="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="box-body">
+          <label for="">再次输入密码</label>
+          <input type="text" class="form-control" id="confirmpwd" name="confirmpwd" placeholder="请输入密码">
+        </div>
+        <div class="box-body">
+        <label>
+			 <input type="radio" checked="true" name="rd" id="rd0" value="rd0">
+				普通授权
+			 </label>
+			 <label>
+			 <input type="radio" name="rd" id="rd1" value="rd1">
+			 	运营授权
+			 </label>
+			 <label>
+			 <input type="radio" name="rd" id="rd2" value="rd2">
+			 	管理员授权
+			 </label>
+		</div>
+	  	<div class="box-body">
+                <button type="submit" class="btn btn-primary">添加</button>
+        </div>
+	</form>
+  </div>
+
+</div>

@@ -1,0 +1,14 @@
+<script type="text/javascript">
+$(function() {
+    $("#sidebar_admin").addClass("menu-open")
+    $("#sidebar_admin ul").show()
+    $("#sidebar_admin ul li:nth-child(1)").addClass("active")
+    rd_value = "rd0"
+    if ({{.Admin.Auth}} == 2) {
+        rd_value = "rd2"
+    } else if ({{.Admin.Auth}} == 1) {
+        rd_value = "rd1"
+    }
+    $(":radio[name='rd'][value='" + rd_value + "']").prop("checked", "checked");
+})
+</script>

@@ -1,0 +1,199 @@
+<!-- 进库登记表 -->
+<div class="home_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li class="active">进销存登记</li>
+        </ol>
+    </div>
+    <!--表格开始-->
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">进销存登记</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+        	<!--添加入库 start-->
+        	<div class="pull-right">
+                <div class="btn-group">
+                        <a type="button" class="btn btn-info" href="/bs/addallcommodity">添加进销存</a>
+                        <button type="button" class="btn btn-info" onclick="onExportPage()">导出本页</button>
+                        <button type="button" class="btn btn-info" onclick="onExportAll()">导出全部</button>
+                        <button type="button" class="btn btn-info" onclick="onImport()">批量导入</button>
+                        <button type="button" class="btn btn-info" onclick="onDowTemplet()">下载模板</button>
+                </div>
+        	</div>
+        	<div class="clearfix"></div>
+        	<!--添加入库 end-->
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+            	<!--功能栏 start-->
+<!--                 <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length" id="example1_length">
+                            <label>显示
+                                <select name="example1_length" aria-controls="example1" class="form-control input-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> 条</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="example1_filter" class="dataTables_filter">
+                            <label>搜索:
+                                <input type="search" class="form-control input-sm" placeholder="" aria-controls="example1">
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+                {{$p := .Page.PageNo}}
+                <!--功能栏 end-->
+                <div class="row">
+                    <div class="col-sm-12" style="overflow: auto;">
+                        <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        	<!--表头 start-->
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc">商品名称</th>
+                                    <th class="sorting">规格</th>
+                                    <th class="sorting">单位</th>
+                                    <th class="sorting">日期</th>
+                                    <th class="sorting">期初结存数量</th>
+									<th class="sorting">期初结存金额</th>
+									<th class="sorting">本期购进数量</th>
+									<th class="sorting">本期购进单价</th>
+									<th class="sorting">本期购进金额</th>
+                                    <th class="sorting">本期发出数量</th>
+                                    <th class="sorting">本期发出单价</th>
+                                    <th class="sorting">本期发出金额</th>
+                                    <th class="sorting">本期结存数量</th>
+									<th class="sorting">本期结存金额</th>
+                                    <th class="sorting">操作</th>
+                                </tr>
+                            </thead>
+                            <!--表头 end-->
+                            <tbody> 
+                            <!-- odd even -->
+                            {{range .AllCommoditys}}
+                                <tr role="row" class="odd">
+                                    <td class="sorting_1" style="min-width: 120px;">{{.Name}}</td>
+                                    <td style="min-width: 120px;">{{.Spec}}</td>
+                                    <td style="min-width: 60px;">{{.Unit}}</td>
+                                    <td style="min-width: 80px;">{{.CDate}}</td>
+                                    <td style="min-width: 60px;">{{.StartNumber}}</td>
+                                    <td style="min-width: 60px;">{{.StartTotal}}</td>
+                                    <td style="min-width: 60px;">{{.InNumber}}</td>
+                                    <td style="min-width: 60px;">{{.InUnitPrice}}</td>
+                                    <td style="min-width: 60px;">{{.InTotal}}</td>
+                                    <td style="min-width: 60px;">{{.OutNumber}}</td>
+                                    <td style="min-width: 60px;">{{.OutUnitPrice}}</td>
+                                    <td style="min-width: 60px;">{{.OutTotal}}</td>
+                                    <td style="min-width: 60px;">{{.EndNumber}}</td>
+                                    <td style="min-width: 60px;">{{.EndTotal}}</td>
+                                    <td style="min-width: 200px;">
+                                        <div class="btn-group">
+                                          <a type="button" class="btn btn-info" href="/bs/upallcommodity?id={{.Id}}&p={{$p}}">修改</a>
+                                          <a type="button" class="btn btn-danger" href="/bs/allcommoditys?op=del&id={{.Id}}&p={{$p}}">删除</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {{end}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-5">
+                    	<!--页数提示 start-->
+                      <!--   <div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 25 of 57 entries</div> -->
+                        <!--页数提示 end-->
+                    </div>
+                    <div class="col-sm-7">
+                    	<!--翻页 start-->
+                        <!-- <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li>
+                                <li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li>
+                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li>
+                                <li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li>
+                                <li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">Next</a></li>
+                            </ul>
+                        </div> -->
+                         <!--翻页 end-->
+                         <!-- 分页显示标签 -->
+                      <div class="page_div">
+                          <ul id="page"></ul>
+                      </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
+    <!--表格结束-->
+
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">导出进销存登记表成功</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="myModal_p"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 批量提交 -->
+    <div class="modal fade" id="importModal" tabindex="-2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">批量导入</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="file" class="form-control" id="filepath" name="filepath" accept=".doc,.docx,.xls,.xlsx" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="onImportXlxs()">导入</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+    <!-- 批量提交-->
+    <!-- 批量导入成功 -->
+    <div id="importSuccesModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">导入进销存登记表</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="myModal_p">导入进销存登记表成功</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="onCloseSucces()">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <!-- 批量导入成功 -->
+
+</div>

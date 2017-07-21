@@ -1,0 +1,47 @@
+<div class="content_bg">
+  <div>
+  	<ol class="breadcrumb">
+  		<li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+    	<li class="active">新闻列表</li>
+	</ol> 
+  </div>
+
+  {{$p := .Page.PageNo}}
+  <ul class="list-group">
+	  {{range .Newss}}
+		  <li class="list-group-item">
+		  	<div class="media">
+		  	  {{if ne .ShowImg ""}}
+				  <div class="media-left media-middle">
+				      <img class="media-object news_img_thu" src="{{isimgpath .ShowImg}}" alt="{{isimgpath .ShowImg}}">
+				  </div>
+			  {{end}}
+			  <div class="media-body">
+			    <h4 class="media-heading">{{.Title}}</h4>
+			    {{.Outline}}
+			    <p >
+			    {{if eq .ReleaseState true}}
+                      <span class="label label-success">已发布</span>
+               	{{else}}
+                      <span class="label label-default">未发布</span>
+                {{end}}
+                {{if eq .IsHome true}}
+	                <span class="label label-success">首页显示</span>
+                {{end}}
+                </p>
+                <div class="time_div">
+			    	{{timeformatstyle1 .CTime}}
+			    </div>
+			  </div>
+			  <div class="media-right">
+			  	<a type="button" class="btn btn-primary" href="/admin/news?id={{.Id}}&p={{$p}}">详情</a>
+			  </div>
+			</div>
+		   </li>	
+		{{end}}
+	</ul>
+	<!-- 分页显示标签 -->
+      <div class="page_div">
+          <ul id="page"></ul>
+      </div>
+</div>

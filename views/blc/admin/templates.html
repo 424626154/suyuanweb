@@ -1,0 +1,48 @@
+<div class="admin_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li class="active">模板列表</li>
+        </ol>
+    </div>
+    {{$p := .Page.PageNo}}
+     <ul class="list-group">
+          {{range .Temaplates}}
+              <li class="list-group-item">
+                <div class="media">
+                  <div class="media-body">
+                    <h4 class="media-heading">
+                    {{.Title}}
+                      {{if eq .FileType ".docx"}}
+                        <i class="fa fa-file-word-o"></i>
+                      {{else if  eq .FileType ".xlsx"}}
+                        <i class="fa fa-file-excel-o"></i>
+                      {{end}}
+                    </h4>
+                    {{.Describe}}
+                    <p >
+                    {{if eq .ReleaseState true}}
+                          <span class="label label-success">已发布</span>
+                    {{else}}
+                          <span class="label label-default">未发布</span>
+                    {{end}}
+                    </p>
+                    <div class="time_div">
+                        {{timeformatstyle1 .CTime}}
+                    </div>
+                  </div>
+                  <div class="media-right">
+                    <a type="button" class="btn btn-primary" href="/bs/admin/template?id={{.Id}}&p={{$p}}">详情</a>
+                  </div>
+                </div>
+               </li>    
+            {{end}}
+        </ul>
+
+             <!-- 分页显示标签 -->
+      <div class="page_div">
+          <ul id="page"></ul>
+      </div>
+</div>

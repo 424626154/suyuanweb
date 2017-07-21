@@ -1,0 +1,52 @@
+<div class="admin_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li class="active">商品名称</li>
+        </ol>
+    </div>
+    <div class="box">
+        <div>
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="输入产品名称" id="commodityname">
+                    <span class="input-group-btn">
+                         <button class="btn btn-default" type="button" onclick="onAddName()">添加</button>
+                        </span>
+                </div>
+                <div id="order_err_alert"></div>
+            </div>
+        </div>
+        <div class="box-body">
+            <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>商品名称</th>
+                        <th>排序</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .CommodityNames}}
+                    <tr>
+                        <td>
+                            <input id="name_{{.Id}}" value="{{.Name}}" type="text"></input>
+                            <button type="button" class="btn btn-danger" onclick="onUpName({{.Id}})">修改</button>
+                        </td>
+                        <td>
+                            <input id="order_{{.Id}}" value="{{.Order}}" type="number"></input>
+                            <button type="button" class="btn btn-danger" onclick="onUpOrder({{.Id}})">修改</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="onDelName({{.Id}})">删除</button>
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="content_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li><a href="/bs/templates" class="header_index">模板列表</a></li>
+            <li class="active">{{.Template.Title}}</li>
+        </ol>
+    </div>
+    <div class="box box-body">
+        <div>
+        </div>
+        <p id="state_p">状态: {{if eq .Template.ReleaseState true}}
+            <span class="label label-success">已发布</span> {{else}}
+            <span class="label label-default">未发布</span> {{end}}
+        </p>
+        <div class="time_div">
+            {{timeformatstyle1 .Template.CTime}}
+        </div>
+        <p class="clear_both">
+            <a href="/bsfilehosting/{{.Template.FileName}}" type="button" class="btn btn-primary">下载</a>
+            <a href="/bs/template?op=up&id={{.Template.Id}}&state={{.Template.ReleaseState}}" id="state_but" class="btn btn-primary" role="button">
+		        	{{if eq .Template.ReleaseState true}}
+	                      撤销
+	               	{{else}}
+	                      发布
+	                {{end}}
+	                </a>
+            <a class="btn btn-default" role="button" href="/bs/uptemplate?id={{.Template.Id}}">修改</a>
+            <a class="btn btn-danger" role="button" href="/bs/template?op=del&id={{.Template.Id}}">删除</a>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<script type="text/javascript">
+function onAddSpec() {
+    var commodityspec = $("#commodityspec").val()
+    if (commodityspec.length > 0) {
+        var data = "op=addspec&spec="+commodityspec;
+        $.ajax({
+            type: "POST",
+            url: "/bs/admin/commodityajax",
+            data: data,
+            dataType: 'json',
+            success: function(obj) {
+                console.log(obj)
+                if (obj.code == 0) {
+                   window.location.reload();
+                } else {
+                    // console.log(obj.err)
+                    // alert(obj.err)
+                    $("#order_err_alert").append("<div id=\"order_err_alert\" class=\"alert alert-warning alert-dismissible\" role=\"alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>" + obj.err + "!</strong></div>");
+
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert(XMLHttpRequest.status);  
+                // alert(XMLHttpRequest.readyState);  
+                // alert(textStatus);  
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+        });
+    } else {
+        alert("参数错误")
+    }
+}
+
+
+
+function onDelSpec(id){
+	var data = "op=delspec&id="+id;
+        $.ajax({
+            type: "POST",
+            url: "/bs/admin/commodityajax",
+            data: data,
+            dataType: 'json',
+            success: function(obj) {
+                console.log(obj)
+                if (obj.code == 0) {
+                   window.location.reload();
+                } else {
+                    // console.log(obj.err)
+                    // alert(obj.err)
+                    $("#order_err_alert").append("<div id=\"order_err_alert\" class=\"alert alert-warning alert-dismissible\" role=\"alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>" + obj.err + "!</strong></div>");
+
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert(XMLHttpRequest.status);  
+                // alert(XMLHttpRequest.readyState);  
+                // alert(textStatus);  
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+    });
+}
+
+function onUpSpec(id){
+	var spec = $("#spec_"+id).val()
+	var data = "op=upspec&id="+id+"&spec="+spec;
+        $.ajax({
+            type: "POST",
+            url: "/bs/admin/commodityajax",
+            data: data,
+            dataType: 'json',
+            success: function(obj) {
+                console.log(obj)
+                if (obj.code == 0) {
+                   window.location.reload();
+                } else {
+                    // console.log(obj.err)
+                    // alert(obj.err)
+                    $("#order_err_alert").append("<div id=\"order_err_alert\" class=\"alert alert-warning alert-dismissible\" role=\"alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>" + obj.err + "!</strong></div>");
+
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert(XMLHttpRequest.status);  
+                // alert(XMLHttpRequest.readyState);  
+                // alert(textStatus);  
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+    });
+}
+
+function onUpOrder(id){
+	var order = $("#order_"+id).val()
+	var data = "op=upspecorder&id="+id+"&order="+order;
+        $.ajax({
+            type: "POST",
+            url: "/bs/admin/commodityajax",
+            data: data,
+            dataType: 'json',
+            success: function(obj) {
+                console.log(obj)
+                if (obj.code == 0) {
+                   window.location.reload();
+                } else {
+                    // console.log(obj.err)
+                    // alert(obj.err)
+                    $("#order_err_alert").append("<div id=\"order_err_alert\" class=\"alert alert-warning alert-dismissible\" role=\"alert\"> <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button><strong>" + obj.err + "!</strong></div>");
+
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                // alert(XMLHttpRequest.status);  
+                // alert(XMLHttpRequest.readyState);  
+                // alert(textStatus);  
+                console.log(textStatus)
+                console.log(errorThrown)
+            }
+    });
+}
+</script>

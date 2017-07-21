@@ -1,0 +1,46 @@
+<div class="content_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li><a href="/admin/banners" class="header_index">Banner列表</a></li>
+            <li><a href="/admin/banner?id={{.Banner.Id}}" class="header_index">Banner详情</a></li>
+            <li class="active">修改Banner</li>
+        </ol>
+    </div>
+    <div class="box box-primary">
+        <form role="form" id="addproductform" action="/admin/upbanner" method="post" enctype="multipart/form-data">
+            <input type="hidden" class="form-control" id="id" name="id" value="{{.Banner.Id}}">
+            <div class="box-body" id="showfromimg">
+                {{if ne .Banner.Image ""}}
+                <img class="img-thumbnail banner_img_thu" src="{{isimgpath .Banner.Image}}" alt="{{isimgpath .Banner.Image}}"> {{end}}
+            </div>
+            <div class="box-body">
+                <label for="">选择Banner预览图</label>
+                <input type="file" class="form-control" id="showimg" name="showimg" accept="image/jpeg,image/jpg,image/png" onchange="uploadFile(this)" />
+            </div>
+            <div class="radio box-body" id="radio_div" name="radio_div">
+                <label>
+                    <input type="radio" name="rd" id="rd0" value="rd0"> 外部链接
+                </label>
+                <label>
+                    <input type="radio" name="rd" id="rd1" value="rd1"> 自定义内容
+                </label>
+                <label>
+                    <input type="radio" checked="true" name="rd" id="rd2" value="rd2"> 不可点
+                </label>
+            </div>
+            <div class="box-body" id="link_div">
+                <label for="">Banner链接</label>
+                <input type="text" class="form-control" id="link" name="link" placeholder="请输入Banner链接">
+            </div>
+            <div class="box-body" style="display: none;" id="summernote_div">
+                <textarea type="text" name="content" id="summernote"></textarea>
+            </div>
+            <div class="box-body">
+                <button type="submit" class="btn btn-primary">修改</button>
+            </div>
+        </form>
+    </div>
+</div>

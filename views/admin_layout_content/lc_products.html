@@ -1,0 +1,81 @@
+<div class="content_bg">
+	<div>
+    <ol class="breadcrumb">
+      <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+      <li class="active">产品列表</li>
+    </ol>
+  </div>
+    {{$p := .Page.PageNo}}
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>品名</th>
+                  <th>香型</th>
+                  <th>净含量</th>
+                  <th>酒精度</th>
+                  <th>缩略图</th>
+                  <th>简介</th>
+									<th>排序</th>
+                  <th>状态</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{range .Products}}
+                  <tr>
+                    <td>{{ .Name}}</td>
+                    <td>{{ .TasteType}}</td>
+                    <td>{{ .Weight}}ml</td>
+                    <td>{{ .Alcoholic}}%(vol)</td>
+                    <td>
+                      <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="" data-content='<img class="img-thumbnail product_popimg" src="{{isimgpath .ShowImg}}" alt="{{isimgpath .ShowImg}}">'>
+                        <img class="img-thumbnail product_showimg" src="{{isimgpath .ShowImg}}" alt="{{isimgpath .ShowImg}}">
+                      </a>
+                    </td>
+                    <td>
+                      <a tabindex="0" class="" role="button" data-toggle="popover" data-trigger="focus" title="" data-content=' <p>{{ .Brief}}</p>'>
+                        {{if ne .Brief ""}}
+                        <p >详情</p>
+                        {{end}}
+
+                      </a>
+                    </td>
+										<td>{{.OrderId}}</td>
+                    <td>
+                    {{if eq .ProductState true}}
+                      <span class="label label-success">已上架</span>
+                    {{else}}
+                      <span class="label label-default">未上架</span>
+                    {{end}}
+                    {{if eq .IsHome true}}
+                      <span class="label label-success">首页显示</span>
+                    {{end}}
+                    </td>
+                    <td><a href="/admin/product?id={{ .Id}}&p={{$p}}"type="button" class="btn btn-block btn-primary">详情</a></td>
+                  </tr>
+                {{end}}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </button>
+      <!-- /.row -->
+      <!-- 分页显示标签 -->
+      <div class="page_div">
+          <ul id="page"></ul>
+      </div>
+</div>
+
+<script type="text/javascript">
+
+</script>

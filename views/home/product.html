@@ -1,0 +1,27 @@
+<div>
+	 <div>
+	    <ol class="breadcrumb">
+	      <li><a href="/products">产品</a></li>
+	      <li class="active">详情</li>
+	    </ol>
+	  </div>
+		<div class="thumbnail">
+			<img class="img-thumbnail" src="{{isimgpath .Product.ShowImg}}" alt="{{isimgpath .Product.ShowImg}}">
+			<div class="caption">
+	        <h3>品名:{{.Product.Name}}</h3>
+	        <p>香型:{{.Product.TasteType}}</p>
+	        <p>净含量:{{.Product.Weight}}ml</p>
+	        <p>酒精度:{{.Product.Alcoholic}}%(vol)</p>
+					{{if ne .Product.Brief "" }}
+					<h4>产品简介</h4>
+						{{.Product.Brief}}
+					{{end}}
+	      </div>
+		</div>
+	<nav aria-label="">
+	  <ul class="pager">
+	    <li id="previous" class="previous"><a href="javascript:void(0);" onclick="pageTurning(0)"><span aria-hidden="true">&larr;</span> 上一个</a></li>
+	    <li id="next" class="next"><a href="javascript:void(0);" onclick="pageTurning(1)">下一个 <span aria-hidden="true">&rarr;</span></a></li>
+	  </ul>
+	</nav>
+</div>

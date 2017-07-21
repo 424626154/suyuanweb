@@ -1,0 +1,42 @@
+<div class="admin_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li><a href="/bs/admin/templates?p={{.Page}}" class="header_index">模板列表</a></li>
+            <li class="active">{{.Template.Title}}</li>
+        </ol>
+    </div>
+    <div class="box box-body">
+        <div>
+            <h4 class="media-heading">
+            {{.Template.Title}}
+              {{if eq .Template.FileType ".docx"}}
+                <i class="fa fa-file-word-o"></i>
+              {{else if  eq .Template.FileType ".xlsx"}}
+                <i class="fa fa-file-excel-o"></i>
+              {{end}}
+            </h4> {{.Template.Describe}}
+        </div>
+        <p id="state_p">状态: {{if eq .Template.ReleaseState true}}
+            <span class="label label-success">已发布</span> {{else}}
+            <span class="label label-default">未发布</span> {{end}}
+        </p>
+        <div class="time_div">
+            {{timeformatstyle1 .Template.CTime}}
+        </div>
+        <p class="clear_both">
+            <a href="/bsfilehosting/{{.Template.FileName}}" type="button" class="btn btn-primary">下载</a>
+            <a href="/bs/admin/template?op=up&id={{.Template.Id}}&state={{.Template.ReleaseState}}&p={{.Page}}" id="state_but" class="btn btn-primary" role="button">
+		        	{{if eq .Template.ReleaseState true}}
+	                      撤销
+	               	{{else}}
+	                      发布
+	                {{end}}
+	                </a>
+            <a class="btn btn-default" role="button" href="/bs/admin/uptemplate?id={{.Template.Id}}&p={{.Page}}">修改</a>
+            <a class="btn btn-danger" role="button" href="/bs/admin/template?op=del&id={{.Template.Id}}&p={{.Page}}">删除</a>
+        </p>
+    </div>
+</div>

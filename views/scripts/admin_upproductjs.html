@@ -1,0 +1,24 @@
+<script type="text/javascript">
+$(function() {
+    $("#name").val({{.Product.Name}})
+    $("#tastetype").val({{.Product.TasteType}})
+    $("#weight").val({{.Product.Weight}})
+    $("#alcoholic").val({{.Product.Alcoholic}})
+    $("#brief").val({{.Product.Brief}})
+    $("#sidebar_product").addClass("menu-open");
+    $("#sidebar_product ul").show();
+    $("#sidebar_product ul li:nth-child(1)").addClass("active");
+
+    something = {{.Product.TasteType}}
+    obj = $("#sel_tastetype option[value='"+something+"']");
+    obj.attr("selected",true);
+})
+
+function uploadFile(file) {
+    $("#showfromimg").hide();
+}
+function selTastetype() {
+    var vs = $('#sel_tastetype  option:selected').val();
+    $("#tastetype").val(vs);
+}
+</script>

@@ -1,0 +1,108 @@
+<script src="/static/js/bootstrap-paginator.js"></script>>
+<script type="text/javascript">
+$(function() {
+    $("#page").bootstrapPaginator({
+        currentPage: '{{.Page.PageNo}}',
+        totalPages: '{{.Page.TotalPage}}',
+        bootstrapMajorVersion: 3,
+        size: "small",
+        onPageClicked: function(e, originalEvent, type, page) {
+            window.location.href = "/bs/incommoditys?p=" + page
+        }
+    });
+});
+
+
+function onExportPage() {
+    // /xlsx/eincommodity
+    var data = "op=epage&p=" + {{.Page.PageNo}};
+    $.ajax({
+        type: "POST",
+        url: "/xlsx/eoutcommodity",
+        data: data,
+        dataType: 'json',
+        success: function(obj) {
+            console.log(obj)
+            if (obj.code == 0) {
+            	    $('#myModal_p').html("请在\"进销存管理\"->\"导出数据\"中查看,文件名为\""+obj.msg+"\"")
+                    $('#myModal').modal()
+            } else {
+                // console.log(obj.err)
+                alert(obj.err)
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // alert(XMLHttpRequest.status);  
+            // alert(XMLHttpRequest.readyState);  
+            // alert(textStatus);  
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+    });
+}
+
+
+function onExportAll() {
+    var data = "op=eall";
+    $.ajax({
+        type: "POST",
+        url: "/xlsx/eoutcommodity",
+        data: data,
+        dataType: 'json',
+        success: function(obj) {
+            console.log(obj)
+            if (obj.code == 0) {
+                    $('#myModal_p').html("请在\"进销存管理\"->\"导出数据\"中查看,文件名为\""+obj.msg+"\"")
+                    $('#myModal').modal()
+            } else {
+                // console.log(obj.err)
+                alert(obj.err)
+            }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            // alert(XMLHttpRequest.status);  
+            // alert(XMLHttpRequest.readyState);  
+            // alert(textStatus);  
+            console.log(textStatus)
+            console.log(errorThrown)
+        }
+    });
+}
+
+function onImport(){
+    $('#importModal').modal()
+}
+
+function onImportXlxs(){
+    var formData = new FormData();
+    formData.append('filepath', $('#filepath')[0].files[0]);
+    $.ajax({
+        url: "/xlsx/ioutcommodity",
+        type: 'POST',
+        cache: false,
+        data: formData,
+        processData: false,
+        contentType: false
+    }).done(function(res) {
+        var obj = JSON.parse(res)
+        if (obj.code == 0 ){
+                $('#importSuccesModal').modal()
+                $('#importModal').modal('hide');
+        }else{
+            alert(obj.err)
+        }
+    }).fail(function(res) {
+        console.log(res)
+    });
+}
+function onCloseSucces(){
+     $('#importSuccesModal').modal('hide');
+     window.location.href = "/bs/outcommoditys?p=" + {{.Page.PageNo}}
+}
+
+function onDowTemplet(){
+    window.location.href = "/"+{{.OutTemplet}}
+}
+
+
+</script>

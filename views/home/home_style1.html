@@ -1,0 +1,42 @@
+    <!--产品栏 滚动栏形式 start-->
+    <!-- {{if gt (.Grops|len) 0}}
+    <div class="product-bg">
+        <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
+            
+            <ol class="carousel-indicators" id="product-carousel-indicators">
+            {{range $index, $elem  := .Grops}}
+                <li data-target="#carousel-example-captions" data-slide-to="{{$index}}" class=""></li>
+            {{end}}
+            </ol>
+
+            
+            <div class="carousel-inner product-carousel-inner" role="listbox" id="product-carousel">
+                    {{range .Grops}}
+                        <div class="item">
+                            {{range .}}
+                                <div class="col-md-3 col-sm4 col-xs-4">
+                                    <a href="/product?id={{.Id}}">
+                                      <div class="thumbnail">
+                                            <img class="tab2_img" alt="{{isimgpath .ShowImg}}" src="{{isimgpath .ShowImg}}">
+                                            <div class="product-caption">
+                                            </div>
+                                        </div> 
+                                    </a>
+                                 </div>              
+                            {{end}}
+                        </div>
+                    {{end}}
+            </div>
+
+            
+            <a class="left carousel-control" href="#carousel-example-captions" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-captions" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+       {{end}}  -->
+       <!--产品栏 滚动栏形式 end-->

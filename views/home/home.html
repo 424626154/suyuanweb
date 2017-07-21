@@ -1,0 +1,87 @@
+<!-- 轮播图 无元素不现实-->
+    {{if gt (.Banners|len) 0}}
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators" id="banner-carousel-indicators">
+            {{range $index, $elem  := .Banners}}
+                <li data-target="#carousel-example-captions" data-slide-to="{{$index}}" class=""></li>
+            {{end}}
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner banner-carousel-indicators" role="listbox" id="banner-carousel">           
+            {{range .Banners}}
+                <div class="item">
+                {{if eq .State 1}}
+                <a href="{{.Link}}">
+                    <img class="carousel-inner" src="{{isimgpath .Image}}" alt="{{isimgpath .Image}}">
+                </a>
+                {{else if eq .State 2}}
+                <a href="/banner?id={{.Id}}">
+                    <img class="carousel-inner" src="{{isimgpath .Image}}" alt="{{isimgpath .Image}}">
+                </a>
+                {{else}}
+                    <img class="carousel-inner" src="{{isimgpath .Image}}" alt="{{isimgpath .Image}}">
+                {{end}}                   
+                </div>
+            {{end}}
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {{end}}
+    <!--内容栏-->
+    {{if eq .Configure.ShowNews true}}
+    <div class="news_bg">
+            <div class="row">
+                {{range .Newss}}
+                <div class="=col-md-6 col-sm-4 tab1_body">
+                    <a href="/news?id={{.Id}}">
+                        <div class="thumbnail">
+                            {{if ne .ShowImg ""}}
+                                <img class="" alt="{{isimgpath .ShowImg}}" src="{{isimgpath .ShowImg}}">
+                            {{end}}
+                            <div class="caption">
+                                <h4 >{{.Title}}</h4>
+                                <p >{{.Outline}}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{end}}
+            </div>
+    </div>
+    {{end}}
+
+       <!--产品栏 平铺 start-->
+       <div class="product-bg">
+            <div class="home_products_div">
+                <h2>精品展示</h2>
+                <a href="/products">全部产品>></a>
+            </div>
+            <div class="clear_both"></div>
+           <dic class="row">
+             {{range .Products}}
+                <div class="col-md-3 col-sm4 col-xs-4">
+                    <a class="products_a" href="/product?id={{.Id}}">
+                        <div class="thumbnail">
+                            <img class="tab2_img" alt="{{isimgpath .ShowImg}}" src="{{isimgpath .ShowImg}}">
+                            <div class="product-caption">
+                                <!-- <p>{{.Name}}</p> -->
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {{end}}
+            </dic>
+        </div>
+       <!--产品栏 平铺 end-->
+    </div>

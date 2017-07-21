@@ -1,0 +1,22 @@
+<script src="/static/js/bootstrap-paginator.js"></script>>
+<script type="text/javascript">
+$(function() {
+    //设置选项
+    $("#sidebar_product").addClass("menu-open")
+    $("#sidebar_product ul").show()
+    $("#sidebar_product ul li:nth-child(1)").addClass("active")
+    $("#page").bootstrapPaginator({
+        currentPage: '{{.Page.PageNo}}',
+        totalPages: '{{.Page.TotalPage}}',
+        bootstrapMajorVersion: 3,
+        size: "small",
+        onPageClicked: function(e, originalEvent, type, page) {
+            window.location.href = "/admin/products?p=" + page
+
+        }
+    });
+    $("[data-toggle='popover']").popover({
+        html: true,
+    });
+});
+</script>

@@ -1,0 +1,52 @@
+<div class="admin_bg">
+    <div>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/bs/admin" class="fa fa-fw fa-home header_index"></a>
+            </li>
+            <li class="active">商品规格</li>
+        </ol>
+    </div>
+    <div class="box">
+        <div class="box-body">
+            <div>
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="输入产品规格" id="commodityspec">
+                        <span class="input-group-btn">
+                         <button class="btn btn-default" type="button" onclick="onAddSpec()">添加</button>
+                        </span>
+                    </div>
+                    <div id="order_err_alert"></div>
+                </div>
+            </div>
+            <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>商品规格</th>
+                        <th>排序</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range .CommoditySpecs}}
+                    <tr>
+                        <td>
+                            <input id="spec_{{.Id}}" value="{{.Spec}}" type="text"></input>
+                            <button type="button" class="btn btn-danger" onclick="onUpSpec({{.Id}})">修改</button>
+                        </td>
+                        <td>
+                            <input id="order_{{.Id}}" value="{{.Order}}" type="number"></input>
+                            <button type="button" class="btn btn-danger" onclick="onUpOrder({{.Id}})">修改</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-danger" onclick="onDelSpec({{.Id}})">删除</button>
+                        </td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

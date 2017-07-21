@@ -1,0 +1,21 @@
+<div>
+	  <div>
+	    <ol class="breadcrumb">
+	      <li><a href="/newss">新闻</a></li>
+	      <li class="active">详情</li>
+	    </ol>
+	  </div>
+	<div>
+		<div id = "content1"  hidden="hidden">
+		{{.News.Content}}
+		</div>
+		<div id = "content2">
+		</div>
+	</div>
+	<nav aria-label="">
+	  <ul class="pager">
+	    <li id="previous" class="previous"><a href="javascript:void(0);" onclick="pageTurning(0)"><span aria-hidden="true">&larr;</span> 上一篇</a></li>
+	    <li id="next" class="next"><a href="javascript:void(0);" onclick="pageTurning(1)">下一篇 <span aria-hidden="true">&rarr;</span></a></li>
+	  </ul>
+	</nav>
+</div>

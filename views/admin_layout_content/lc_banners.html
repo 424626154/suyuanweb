@@ -1,0 +1,45 @@
+<div class="content_bg">
+  <div>
+    <ol class="breadcrumb">
+      <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+      <li class="active">Banner列表</li>
+    </ol>
+  </div>
+
+  <div>
+
+  </div>
+  <ul class="list-group">
+	  {{range .Banners}}
+		  <li class="list-group-item">
+		  	<div class="media">
+			  <div class="media-body">
+			     {{if ne .Image ""}}
+				      <img class="media-object banner_img_thu" src="{{isimgpath .Image}}" alt="{{isimgpath .Image}}">
+			  	  {{end}}
+			  	  <p>
+				  	  {{if eq .State 1}}
+				  	  	<span class="label label-success">外部链接</span>
+				  	  {{else if eq .State 1}}
+				  	  	<span class="label label-success">自定义内容</span>
+				  	  {{else}}
+				  	  	<span class="label label-success">无响应</span>
+				  	  {{end}}
+				  	  {{if eq .ReleaseState true}}
+	                      <span class="label label-success">已发布</span>
+		              {{else}}
+		                  <span class="label label-default">未发布</span>
+		              {{end}}
+	              </p>
+	              <div class="time_div">
+			    	{{timeformatstyle1 .CTime}}
+			      </div>
+			  </div>
+			  <div class="media-right">
+			 		<a type="button" class="btn btn-primary" href="/admin/banner?id={{.Id}}">详情</a>
+			  </div>
+			</div>
+		   </li>	
+		{{end}}
+	</ul>
+</div>

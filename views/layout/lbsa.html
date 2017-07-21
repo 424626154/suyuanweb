@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>苏缘酒业集团工作系统后台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"> 
+
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/static/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="/static/dist/css/skins/skin-blue.min.css">
+
+    <link href="/static/css/bs_style.css" rel="stylesheet">
+
+    <!-- jQuery 3.1.1 -->
+    <script src="/static/plugins/jQuery/jquery-3.1.1.min.js"></script>
+    
+    {{.AHead}}
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+    <!--<body class="skin-blue sidebar-mini sidebar-collapse">-->
+    
+    <div class="wrapper">
+        {{template "/bs/bahead_top.html" .}}
+        <!-- Left side column. contains the logo and sidebar -->
+        {{template "/bs/baside_left.html" .}}
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            {{.LayoutContent}}
+        </div>
+        <!-- /.content-wrapper -->
+
+
+        <!-- Control Sidebar -->
+        <!-- {{template "/admin/aside_right.html" .}} -->
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+        <!--<div class="control-sidebar-bg"></div>-->
+    </div>
+    <div class="wrapper">
+        {{template "/bs/bafooter.html" .}}
+    </div>
+    <!-- ./wrapper -->
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> -->
+
+    <!-- jQuery 3.1.1 -->
+    <!-- <script src="/static/plugins/jQuery/jquery-3.1.1.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <!-- AdminLTE App -->
+    <script src="/static/dist/js/adminlte.min.js"></script>
+
+    <script src="/static/dist/js/app.js"></script>
+
+    {{.Scripts}}
+</body>
+
+</html>

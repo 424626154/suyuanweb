@@ -1,0 +1,89 @@
+<div class="content_bg">
+
+  <div>
+    <ol class="breadcrumb">
+        <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+        <li><a href="/admin/products&p={{.Page}}" class="header_index">产品列表</a></li>
+        <li><a href="/admin/product?id={{.Product.Id}}&p={{.Page}}" class="header_index">产品详情</a></li>
+        <li class="active">{{.Product.Name}}</li>
+      </ol>
+  </div>
+
+<div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">添加产品</h3>
+            </div>
+            {{if ne .Error ""}}
+              <div class="alert alert-danger" role="alert">{{.Error}}</div>
+            {{end}}
+            <!-- /.box-header -->
+
+            <!-- form start -->
+            <form role="form" id="addproductform" action="/admin/upproduct" method="post" enctype="multipart/form-data">
+              <div class="box-body">
+                <input type="hidden" class="form-control" id="id" name="id" value="{{.Product.Id}}">
+                <input type="hidden" class="form-control" id="p" name="p" value="{{.Page}}">
+                <div class="form-group has-feedback">
+                  <label for="">产品名称</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="请输入产品名称">
+                </div>
+
+                <div class="form-group">
+                <label>香型</label>
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon">
+                      <select id="sel_tastetype" onchange="selTastetype()">
+                            <option value="" selected="true" disabled="true">选择香型</option>
+                            <option value="酱香">酱香</option>
+                            <option value="浓香">浓香</option>
+                            <option value="清香">清香</option>
+                            <option value="兼香">兼香</option>
+                            <option value="米香">米香</option>
+                            <option value="凤香">凤香</option>
+                            <option value="芝麻香">芝麻香</option>
+                            <option value="豉香">豉香</option>
+                            <option value="特香">特香</option>
+                            <option value="药香">药香</option>
+                            <option value="老白干香">老白干香</option>
+                            <option value="馥郁香">馥郁香</option>
+                      </select>
+                  </span>
+                  <input type="text" class="form-control" id="tastetype" name="tastetype" aria-describedby="basic-addon" placeholder="选择香型">
+                </div>
+              </div>
+
+                <div class="form-group">
+                  <label for="">净含量</label>
+                  <input type="text" class="form-control" id="weight" name="weight" placeholder="请输入净含量">
+                </div>
+
+                <div class="form-group">
+                  <label for="">酒精度</label>
+                  <input type="number" class="form-control" id="alcoholic" name="alcoholic" placeholder="请输入酒精度">
+                </div>
+                <div class="form-group">
+                    <label for="">产品简介</label>
+                    <textarea class="form-control" rows="5" placeholder="请输入产品简介" id="brief" name="brief"></textarea>
+                </div>
+                <div class="form-group" id="showfromimg">
+                     <img class="img-thumbnail product_showimg_up" src="{{isimgpath .Product.ShowImg}}" alt="{{isimgpath .Product.ShowImg}}">
+                </div>
+                <div class="form-group">
+                  <label for="">修改产品宣传图</label>
+                  <input type="file" class="form-control" id="showimg" name="showimg" accept="image/jpeg,image/jpg,image/png" onchange="uploadFile(this)" />
+                </div>
+                <!--web uploader-->
+      <!--           <div id="form-group">
+                    <label for="">宣传图片</label>
+                    <div id="fileList" class="uploader-list"></div>
+                    <div id="filePicker">选择图片</div>
+                </div> -->
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">修改</button>
+              </div>
+            </form>
+          </div>
+</div>

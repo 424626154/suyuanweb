@@ -1,0 +1,67 @@
+<div class="content_bg">
+
+	<div>
+		<ol class="breadcrumb">
+	      <li><a href="/admin" class="fa fa-fw fa-home header_index"></a></li>
+	      <li class="active">账号列表</li>
+	    </ol>
+	</div>
+	<div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>用户名</th>
+                  {{if eq .MyAdmin.Auth 2}}
+                  <th>密码</th>
+                  {{end}}
+                  <th>权限</th>
+                  {{if eq .MyAdmin.Auth 2}}
+                  <th>修改密码</th>
+                  {{end}}
+                  {{if eq .MyAdmin.Auth 2}}
+                  <th>修改权限</th>
+                  {{end}}
+                  <th></th>
+                </tr>
+                </thead>
+                {{$Auth := .MyAdmin.Auth}}
+                <tbody>
+                {{range .Admins}}
+                  <tr>
+                    <td>{{ .Account}}</td>
+                    {{if eq $Auth 2}}
+	                 <td>{{ .Password}}</td>
+	                {{end}}
+                    <td>
+                    {{if eq .Auth 2}}
+                      <span class="label label-success">管理员</span>
+                    {{else if eq .Auth 1}}
+                      <span class="label label-default">运营</span>
+                    {{else}}
+                    	<span class="label label-default">浏览</span>
+                    {{end}}
+                    </td>
+                    {{if eq $Auth 2}}
+                    <td><a href="/admin/upadminpwd?id={{ .Id}}"type="button" class="btn btn-block btn-primary">修改</a></td>
+                  	{{end}}
+                    {{if eq $Auth 2}}
+                    <td><a href="/admin/upadminauth?id={{ .Id}}"type="button" class="btn btn-block btn-primary">修改</a></td>
+                    {{end}}
+                  </tr>
+                {{end}}
+                </tbody>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+
+</div>
